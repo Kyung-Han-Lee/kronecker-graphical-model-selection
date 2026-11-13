@@ -1,6 +1,4 @@
 {
-  "_jrssb_resolution_note": "At final print size, JRSSB requires at least 350 ppi for raster pictures and 600 ppi for raster line art; complex or finely drawn line art should be 1200 ppi. Vector PDF plots are resolution independent. The raster policy keeps Figure 4 at 600 ppi even when the 5.97 in PDF is enlarged to the 6.4 in article text width. The dpi value controls PNG previews, not vector PDF paths or text.",
-  "_jrssb_resolution_source": "https://academic.oup.com/jrsssb/pages/general-instructions",
   "text_width_in": 5.97,
   "heights_in": {
     "fig1": 1.78,
@@ -81,7 +79,6 @@
     "ha": "left",
     "va": "bottom"
   },
-  "_y_ticks_note": "Curve panels span -limit_factor*T to limit_factor*T and label only -T, 0 and T, so every panel carries three tick labels at the same heights; T is the smallest round_steps value (times a power of ten) whose limits hold every curve. 1.15 keeps the outer labels about 6.5% of the panel height clear of the frame corners.",
   "y_ticks": {
     "limit_factor": 1.15,
     "round_steps": [

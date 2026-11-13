@@ -55,7 +55,6 @@
     "ha": "left",
     "va": "bottom"
   },
-  "_y_ticks_note": "The panels of Figure 1 span -limit_factor*T to limit_factor*T and label only -T, 0 and T, so every panel carries three tick labels at the same heights; T is the smallest round_steps value (times a power of ten) whose limits hold every curve. 1.15 keeps the outer labels about 6.5% of the panel height clear of the frame corners.",
   "y_ticks": {
     "limit_factor": 1.15,
     "round_steps": [
