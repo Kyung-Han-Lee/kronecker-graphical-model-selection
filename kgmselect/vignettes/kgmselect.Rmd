@@ -1,0 +1,25 @@
+---
+title: "Profiled model selection on a Kronecker path"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Profiled model selection on a Kronecker path}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(kgmselect)
+truth <- list(kgm_simulate_precision(10, "er", degree = 2, seed = 1),
+              kgm_simulate_precision(8, "er", degree = 2, seed = 2))
+Y <- kgm_sample(60, lapply(truth, solve), seed = 3)
+path <- kgm_path(Y, kgm_eta_grid(15, c(1e-2, 1e2)))
+```
+
+EBIC at the normalised fit and relaxation-profiled EBIC score the same path.
+
+```{r}
+sel_ebic <- kgm_select(path, Y, criterion = "ebic", gamma = 0.5)
+sel_relax <- kgm_select(path, Y, criterion = "relaxation", gamma = 0.5)
+c(ebic = sel_ebic$index, relaxation = sel_relax$index)
+unlist(kgm_metrics(truth, path$fits[[sel_relax$index]])[c("mcc", "fdp", "tpr")])
+```

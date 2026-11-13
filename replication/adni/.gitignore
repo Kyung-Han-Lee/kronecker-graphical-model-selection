@@ -1,0 +1,14 @@
+data/
+deps/
+code/adni/results/
+JRSSB-Frob/fig/*.pdf
+JRSSB-Frob/fig/*.png
+JRSSB-Frob/tables/*.tex
+JRSSB-Frob-assets/
+logs/
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+*.log
+.env

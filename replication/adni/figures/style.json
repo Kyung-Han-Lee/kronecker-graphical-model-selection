@@ -1,0 +1,100 @@
+{
+  "_jrssb_resolution_note": "At final print size, JRSSB requires at least 350 ppi for raster pictures and 600 ppi for raster line art; complex or finely drawn line art should be 1200 ppi. Vector PDF plots are resolution independent. The raster policy keeps Figure 4 at 600 ppi even when the 5.97 in PDF is enlarged to the 6.4 in article text width. The dpi value controls PNG previews, not vector PDF paths or text.",
+  "_jrssb_resolution_source": "https://academic.oup.com/jrsssb/pages/general-instructions",
+  "text_width_in": 5.97,
+  "heights_in": {
+    "fig1": 1.78,
+    "fig2": 2.4,
+    "fig3": 2.7,
+    "fig4": 3.9,
+    "adni_ebic_curve": 2.05,
+    "mcc_violin": 3.6
+  },
+  "font": {
+    "family": "Latin Modern Roman",
+    "mathtext_fontset": "cm",
+    "mathtext_fallback": null,
+    "otf_dir": "/usr/share/texmf/fonts/opentype/public/lm",
+    "otf_files": [
+      "lmroman10-regular.otf",
+      "lmroman10-bold.otf",
+      "lmroman10-italic.otf",
+      "lmroman10-bolditalic.otf"
+    ],
+    "latex_preamble": [
+      "\\usepackage{fontspec}",
+      "\\usepackage{unicode-math}",
+      "\\setmathfont{latinmodern-math.otf}"
+    ],
+    "size_pt": 8,
+    "tick_pt": 7,
+    "legend_pt": 7,
+    "title_pt": 8,
+    "panel_label_pt": 9,
+    "panel_label_weight": "bold",
+    "latex_engine": "xelatex"
+  },
+  "line_pt": {
+    "main": 1.2,
+    "emphasis": 1.8,
+    "secondary": 0.8,
+    "reference": 0.7,
+    "axes": 0.6
+  },
+  "marker_pt": 4,
+  "dpi": 600,
+  "raster": {
+    "min_effective_ppi": 600,
+    "widest_inclusion_width_in": 6.4
+  },
+  "palette": {
+    "black": "#000000",
+    "orange": "#E69F00",
+    "sky_blue": "#56B4E9",
+    "bluish_green": "#009E73",
+    "yellow": "#F0E442",
+    "blue": "#0072B2",
+    "vermillion": "#D55E00",
+    "reddish_purple": "#CC79A7"
+  },
+  "roles": {
+    "group.CN": "blue",
+    "group.MCI": "orange",
+    "group.Dementia": "vermillion",
+    "selection": "sky_blue",
+    "median": "vermillion",
+    "convention.penalized": "vermillion",
+    "convention.unpenalized": "bluish_green",
+    "set.empty_graph": "reddish_purple",
+    "edge": "vermillion",
+    "node": "black",
+    "shade": "#E8E8E8",
+    "colormap": "viridis"
+  },
+  "panel_label": {
+    "x_axes": 0,
+    "y_axes": 1,
+    "offset_pt": [
+      0,
+      4
+    ],
+    "ha": "left",
+    "va": "bottom"
+  },
+  "_y_ticks_note": "Curve panels span -limit_factor*T to limit_factor*T and label only -T, 0 and T, so every panel carries three tick labels at the same heights; T is the smallest round_steps value (times a power of ten) whose limits hold every curve. 1.15 keeps the outer labels about 6.5% of the panel height clear of the frame corners.",
+  "y_ticks": {
+    "limit_factor": 1.15,
+    "round_steps": [
+      1,
+      1.5,
+      2,
+      2.5,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10
+    ]
+  }
+}

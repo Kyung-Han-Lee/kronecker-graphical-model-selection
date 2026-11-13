@@ -1,0 +1,25 @@
+now <- matrix(c(1, 0, 0.3, 0, 1, 0, 0.3, 0, 1), 3, 3)
+prev <- matrix(c(1, 0.1, 0.4, 0.1, 1, 0, 0.4, 0, 1), 3, 3)
+d <- kgm_relaxation_direction(now, prev, lambda_now = 0.5, lambda_prev = 0.25)
+expect_equal(d$delta[1, 2], 0)
+expect_equal(d$delta[1, 3], 0.2, tolerance = 1e-12)
+expect_equal(d$delta[3, 1], 0.2, tolerance = 1e-12)
+expect_equal(d$n_masked, 1L)
+expect_true(d$active)
+
+A <- matrix(c(1, 0.2, 0.2, 1), 2, 2)
+D <- matrix(c(0, -0.1, -0.1, 0), 2, 2)
+info <- kgm_relaxation_interval(A, D)
+expect_true(info$active)
+expect_equal(info$u_support, 2, tolerance = 1e-12)
+expect_equal(info$u_pd, 12, tolerance = 1e-10)
+expect_equal(info$u_upper, (1 - 1e-8) * 2, tolerance = 1e-12)
+expect_equal(info$bound_kind, "support")
+
+A_raw <- matrix(c(2, 0.3, 0.3, 1), 2, 2)
+A_unit <- A_raw / norm(A_raw, "F")
+for (multiple in c(-0.5, 0.3)) {
+    radial <- kgm_relaxation_interval(A_unit, multiple * A_unit)
+    expect_false(radial$active)
+    expect_equal(radial$u_upper, 0)
+}

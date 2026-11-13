@@ -1,0 +1,11 @@
+.Rhistory
+.RData
+.Rproj.user/
+*.Rcheck/
+kgmselect_*.tar.gz
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+replication/outputs/
+replication/.R-library/

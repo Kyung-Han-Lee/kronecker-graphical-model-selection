@@ -1,0 +1,275 @@
+{
+  "aggregate_code": "846abd193de6c383186a9876e9fe46d752da54ac0e744fbbae7c14034c9cd818",
+  "per_dataset": {
+    "files": [
+      {
+        "file": "per_dataset/figure1_scores.csv.gz",
+        "rows": 12000,
+        "sha256": "907196ea6dbb04cfd43e1d27329750fbc5b68ebfcde9f18d4755f71c7aa259a8"
+      },
+      {
+        "file": "per_dataset/paths.csv.gz",
+        "rows": 16400,
+        "sha256": "1167b230c5381196d3edee48ef55b355c0cde08da2d45201e93b5b6113060c5c"
+      },
+      {
+        "file": "per_dataset/pilot_candidates.csv.gz",
+        "rows": 10000,
+        "sha256": "149a918543d16d206ca8bffeddfb66e4061dad6964d541b34a171d1bc5c58e0a"
+      },
+      {
+        "file": "per_dataset/selected.csv.gz",
+        "rows": 304900,
+        "sha256": "75a0b252604df5f65b6c07a97bdb93ceb2ec3ccf999183882f4d246653ced91a"
+      }
+    ],
+    "sources": []
+  },
+  "experiments": {
+    "cv": {
+      "datasets": 16400,
+      "selections": 16400,
+      "rules": [
+        {
+          "criterion": "cv"
+        }
+      ]
+    },
+    "matrix": {
+      "datasets": 14000,
+      "selections": 168000,
+      "rules": [
+        {
+          "criterion": "ebic",
+          "gamma": 0
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.25
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.5
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 1
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 0
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 0.25
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 0.5
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 1
+        },
+        {
+          "criterion": "scale",
+          "gamma": 0
+        },
+        {
+          "criterion": "scale",
+          "gamma": 0.25
+        },
+        {
+          "criterion": "scale",
+          "gamma": 0.5
+        },
+        {
+          "criterion": "scale",
+          "gamma": 1
+        }
+      ]
+    },
+    "refit_pilot": {
+      "datasets": 250,
+      "selections": 500,
+      "rules": [
+        {
+          "criterion": "refit",
+          "gamma": 0.5
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 0.5
+        }
+      ]
+    },
+    "stars": {
+      "datasets": 1400,
+      "selections": 2800,
+      "rules": [
+        {
+          "criterion": "stars",
+          "threshold": 0.05
+        },
+        {
+          "criterion": "stars",
+          "threshold": 0.1
+        }
+      ]
+    },
+    "tensor": {
+      "datasets": 2400,
+      "selections": 5200,
+      "rules": [
+        {
+          "criterion": "ebic",
+          "gamma": 0.5
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 0.5
+        },
+        {
+          "criterion": "scale",
+          "gamma": 0.5
+        }
+      ]
+    },
+    "units": {
+      "datasets": 14000,
+      "selections": 112000,
+      "rules": [
+        {
+          "criterion": "ebic",
+          "gamma": 0.5,
+          "constant": 0.01
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.5,
+          "constant": 0.1
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.5,
+          "constant": 1
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.5,
+          "constant": 10
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.5,
+          "constant": 100
+        },
+        {
+          "criterion": "ebic",
+          "gamma": 0.5,
+          "constant": 1000
+        },
+        {
+          "criterion": "relaxation",
+          "gamma": 0.5,
+          "constant": 1
+        },
+        {
+          "criterion": "scale",
+          "gamma": 0.5,
+          "constant": 1
+        }
+      ]
+    }
+  },
+  "tables": [
+    {
+      "file": "tables/TableB4.csv",
+      "label": "tab:sim-fdr-tpr",
+      "caption": "Mean FDP and TPR for (116,102) matrices",
+      "printed": "means with SDs in parentheses, three decimals",
+      "rows": 14,
+      "sha256": "393da58d50f8bf7cb92fd71f73849b9e115ad76650e3461c40d3180b28517ef0"
+    },
+    {
+      "file": "tables/TableB3.csv",
+      "label": "tab:sim-true-model",
+      "caption": "Selection of the true model by Relaxation on the fitted paths that contain it",
+      "printed": "percentage selected with one decimal and the counts selected/paths with thousands separated by commas; rows any, adjacent and single by M (the separated row is not printed)",
+      "rows": 12,
+      "sha256": "f89b233cf88213e7a7bc1db75afd2e7446ea9b0cc0054b0b92677d1540708dda"
+    },
+    {
+      "file": "tables/TableB1.csv",
+      "label": "tab:app-m2-selection",
+      "caption": "Selection frequencies (%) in the matrix simulations",
+      "printed": "percentages, whole numbers without decimals and others with two; rows of several gammas with equal values are printed once",
+      "rows": 12,
+      "sha256": "1959a1efda75acea79a1672852212e33e3f3b9183d588f0a3795607be84c4a5b"
+    },
+    {
+      "file": "tables/TableB2.csv",
+      "label": "tab:app-m2-units",
+      "caption": "Selection frequencies (%) at gamma = 0.5 after multiplying the data by a constant and the grid by its square",
+      "printed": "percentages as in Table B.1, and mean MCC with three decimals (-0.000 as 0.000) and its SD in parentheses; constants 0.1, 1, 10 and 100; Scale and Relaxation once, as 'all', since their rows are equal for every constant",
+      "rows": 8,
+      "sha256": "1ae91cb86bb1a62c930a6c0be3b3f95919a9670d22340cbe6d2828de099e6d25"
+    },
+    {
+      "file": "tables/TableB5.csv",
+      "label": "tab:app-refit-pilot",
+      "caption": "Refit and Relaxation at small sample sizes for (p1,p2) = (100,5), ER graphs with d = 2 and gamma = 0.5",
+      "printed": "counts, and mean MCC with three decimals (-0.000 as 0.000) and its SD in parentheses",
+      "rows": 5,
+      "sha256": "92f272f130897639476fad1e1d5527a8ba44fc9aa1e616180e61e0b4a5da8eb4"
+    },
+    {
+      "file": "tables/TableB6.csv",
+      "label": "tab:app-m2-support",
+      "caption": "Support recovery for matrix data at gamma = 0.5",
+      "printed": "means with SDs in smaller parentheses, three decimals; n = 10, 100 and 3200",
+      "rows": 140,
+      "sha256": "cff3bfc35c085927aa8ba95f3f95d8ce26c94b74184adcbb6e69d47052dc47ad"
+    },
+    {
+      "file": "tables/Table1.csv",
+      "label": "tab:app-tensor-support",
+      "caption": "Support recovery for three- and four-way tensors",
+      "printed": "means with SDs in smaller parentheses, three decimals",
+      "rows": 24,
+      "sha256": "dbbb959c1db31d96064ced7e527239f3f375519a5c016de3a710ff150e81154a"
+    },
+    {
+      "file": "tables/TableB7.csv",
+      "label": "tab:app-m2-gamma",
+      "caption": "MCC of Scale and Relaxation for matrix data at four values of gamma",
+      "printed": "means with SDs in smaller parentheses, three decimals; n = 10, 100 and 3200",
+      "rows": 140,
+      "sha256": "3f91689cbc1f5a25f6dd0dff4c00a8a322a341d9c2a3c2f9c29f9d3717f656d7"
+    }
+  ],
+  "skipped": {},
+  "figures": [
+    {
+      "file": "figures/figure1_curves.csv",
+      "rows": 12000,
+      "sha256": "363915d30e143ac5e44afb5859f99be8c944055ea79a23f6306bffe3fd090e1d"
+    },
+    {
+      "file": "figures/figure1_medians.csv",
+      "rows": 120,
+      "sha256": "aff52bf50d51c421212138f720cceb47745e6c51077d925279096ecd6c26b7e7"
+    },
+    {
+      "file": "figures/figure2_path.csv",
+      "rows": 220,
+      "sha256": "f9e122e0e2e25122816ee1c18587f1b42a024f023d87965092e43ee9f0777861"
+    },
+    {
+      "file": "figures/figure3_mcc.csv",
+      "rows": 7000,
+      "sha256": "6d02748e7b0f1696f6bc1f6f3e64de1bf81e052dd6791c705b2394a1f76d88fc"
+    }
+  ],
+  "figures_skipped": {}
+}

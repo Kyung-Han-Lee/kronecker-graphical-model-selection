@@ -1,0 +1,45 @@
+source("helper_lib.R")
+
+adj <- matrix(FALSE, 5, 5)
+adj[1, 2] <- adj[2, 3] <- adj[1, 3] <- adj[4, 5] <- TRUE
+expect_identical(greedy_clique(adj), 3L)
+expect_identical(greedy_clique(matrix(FALSE, 3, 3)), 1L)
+expect_identical(greedy_clique(matrix(TRUE, 4, 4)), 4L)
+expect_identical(first_minimum(c(3, 1, 1, 2), rep(TRUE, 4)), 2L)
+expect_identical(first_minimum(c(3, 1, 1, 2), c(TRUE, FALSE, TRUE, TRUE)), 3L)
+expect_identical(first_minimum(c(3, 1), c(FALSE, FALSE)), NA_integer_)
+
+row <- data.frame(setting = "t", M = 2L, family = "er", dims = "6x4", d = 1, m_new = NA,
+                  n = 10L, n_idx = 1L, reps = 2L, w = 0.3, w_spread = 0.25, margin = 0.5,
+                  gradient = "numeric", stringsAsFactors = FALSE)
+gen <- make_dataset(row, 1L)
+eta <- kgm_eta_grid(5L, c(0.01, 10))
+path <- kgm_path(gen$Y, eta)
+full <- kgm_score(path, gen$Y, "refit", gamma = 0.5, tol = 0)
+one <- refit_within(path, gen$Y, 3L, 0.5, 30)
+expect_identical(one$status, "ok")
+expect_identical(one$loglik, full$loglik[3])
+expect_identical(one$ebic, full$ebic[3])
+expect_identical(refit_within(path, gen$Y, 3L, 0.5, 1e-3)$status, "timeout")
+
+small <- make_dataset(transform(row, dims = "8x2", n = 2L), 1L)
+spath <- kgm_path(small$Y, eta)
+spath$fits[[1]][[1]] <- matrix(0.1, 8, 8) + diag(8)
+spath$fits[[2]] <- spath$fits[[1]]
+pr <- pilot_refits(spath, small$Y, 0.5, 30)
+expect_identical(pr$status[1:2], c("nonexistent", "nonexistent"))
+expect_true(startsWith(pr$clique[1], "8/"))
+expect_true(all(pr$status[-(1:2)] %in% c("ok", "nonconverged", "error", "timeout")))
+
+f <- tempfile(fileext = ".csv")
+write.csv(row, f, row.names = FALSE, na = "")
+code <- driver_code_hash(file.path("..", "..", "R"))
+out <- tempfile()
+run_pilot_experiment("tiny", f, out, code, workers = 2L, eta = eta, seconds = 30)
+r <- readRDS(file.path(out, "datasets", "t_r001.rds"))
+expect_identical(r$candidates$k, 1:5)
+expect_identical(r$candidates$refit_loglik, full$loglik)
+expect_identical(r$selected$criterion, c("relaxation", "refit"))
+rx <- kgm_score(path, gen$Y, "relaxation", gamma = 0.5, tol = 0)
+expect_identical(r$selected$k[1], first_minimum(rx$ebic, rx$status == "ok"))
+expect_identical(jsonlite::read_json(file.path(out, "run.json"))$method$seconds, 30L)

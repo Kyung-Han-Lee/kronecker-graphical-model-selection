@@ -1,0 +1,74 @@
+{
+  "text_width_in": 5.97,
+  "heights_in": {
+    "figure1": 1.78,
+    "figure2": 2.4,
+    "figure3": 3.6
+  },
+  "font": {
+    "family": "Latin Modern Roman",
+    "fallback": "DejaVu Serif",
+    "mathtext_fontset": "cm",
+    "mathtext_fallback": null,
+    "otf_files": [
+      "lmroman10-regular.otf",
+      "lmroman10-bold.otf",
+      "lmroman10-italic.otf",
+      "lmroman10-bolditalic.otf"
+    ],
+    "size_pt": 8,
+    "tick_pt": 7,
+    "legend_pt": 7,
+    "title_pt": 8,
+    "panel_label_pt": 9,
+    "panel_label_weight": "bold"
+  },
+  "line_pt": {
+    "main": 1.2,
+    "emphasis": 1.8,
+    "secondary": 0.8,
+    "reference": 0.7,
+    "axes": 0.6
+  },
+  "marker_pt": 4,
+  "dpi": 600,
+  "palette": {
+    "black": "#000000",
+    "sky_blue": "#56B4E9",
+    "vermillion": "#D55E00",
+    "reddish_purple": "#CC79A7"
+  },
+  "roles": {
+    "selection": "sky_blue",
+    "median": "vermillion",
+    "path": "vermillion",
+    "empty_graph": "reddish_purple",
+    "shade": "#E8E8E8"
+  },
+  "panel_label": {
+    "x_axes": 0,
+    "y_axes": 1,
+    "offset_pt": [
+      0,
+      4
+    ],
+    "ha": "left",
+    "va": "bottom"
+  },
+  "_y_ticks_note": "The panels of Figure 1 span -limit_factor*T to limit_factor*T and label only -T, 0 and T, so every panel carries three tick labels at the same heights; T is the smallest round_steps value (times a power of ten) whose limits hold every curve. 1.15 keeps the outer labels about 6.5% of the panel height clear of the frame corners.",
+  "y_ticks": {
+    "limit_factor": 1.15,
+    "round_steps": [
+      1,
+      1.5,
+      2,
+      2.5,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10
+    ]
+  }
+}

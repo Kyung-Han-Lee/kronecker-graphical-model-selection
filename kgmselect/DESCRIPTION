@@ -1,0 +1,23 @@
+Package: kgmselect
+Type: Package
+Title: Profiled Model Selection for Kronecker Graphical Models
+Version: 0.1.4
+Authors@R: c(
+    person("Kyung Han", "Lee", email = "rudgksdl94@gmail.com", role = c("aut", "cre")),
+    person("Min Jin", "Ha", role = "aut"))
+Description: Fits sparse Kronecker (tensor-normal) graphical models along a
+    regularisation path whose factors are normalised to unit Frobenius norm,
+    and selects a candidate on the path by the extended Bayesian information
+    criterion evaluated at the normalised fit, by a scale-profiled version of
+    it or by a relaxation-profiled version that also adjusts the shrunken
+    coefficients along support-preserving directions. Cross-validation, the
+    stability approach to regularisation selection and support-constrained
+    refitting are included for comparison.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.6.0)
+Imports: huge (>= 1.6), glasso, expm, rTensor, stats, utils
+Suggests: igraph, tinytest, knitr, rmarkdown
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1

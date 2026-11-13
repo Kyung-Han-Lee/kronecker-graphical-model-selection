@@ -1,0 +1,3 @@
+"setting","M","family","dims","d","m_new","n","n_idx","reps","w","w_spread","margin","gradient"
+"q_m2_er_d1_p8x6_n0050",2,"er","8x6",1,,50,1,2,0.3,0.25,0.5,"numeric"
+"q_m2_ba_m1_p8x6_n0050",2,"ba","8x6",,1,50,1,2,0.3,0.25,0.5,"numeric"
